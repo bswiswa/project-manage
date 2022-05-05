@@ -21,3 +21,11 @@ input.ng-invalid {
 label.invalid {
   color: var(--input-invalid-color);
 }
+
+header {
+  height: 5.1875rem;
+}
+
+a.button.active {
+  border: 1px solid var(--fore-color);
+}
