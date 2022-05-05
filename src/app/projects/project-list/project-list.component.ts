@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Project } from '../shared/project.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Project } from '../shared/project.model';
 export class ProjectListComponent implements OnInit {
   @Input() projects: Project[] = [];
   editingProject: Project | null = null;
+  @Output() saveProject = new EventEmitter<Project>();
 
   constructor() {}
 
@@ -21,5 +22,10 @@ export class ProjectListComponent implements OnInit {
 
   onCancel() {
     this.editingProject = null;
+  }
+
+  onSave(project: Project) {
+    this.editingProject = null;
+    this.saveProject.next(project);
   }
 }
